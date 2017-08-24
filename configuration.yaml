@@ -43,32 +43,12 @@ sensor: !include sensor.yaml
 
 switch: !include switch.yaml
 
-media_player:
-  - platform: webostv
-    name: Telewizor
-    host: 192.168.1.13
-    mac: C8:08:E9:EC:FE:E5
-    customize:
-      sources:
-        - livetv
-        - youtube
-        - netflix
-        - HDMI2
-  - platform: spotify
-    client_id: e40f3abe28b2457bb288fa1ac9a2da9a
-    client_secret: 1e0e4ea0ffb548e3bc1fa7c0b245a6f1       
+media_player: !include media_player.yaml      
 
-notify:
-  - platform: webostv
-    host: 192.168.1.13
-    name: Telewizor
+notify: !include notify.yaml
 
-device_tracker:
-  - platform: nmap_tracker
-    hosts:
-      - 192.168.1.10
-      - 192.168.1.17
-    home_interval: 5
+device_tracker: !include device_tracker.yaml
+
 # Text to speech
 #tts:
 #  - platform: google

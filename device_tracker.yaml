@@ -1,0 +1,5 @@
+- platform: nmap_tracker
+  hosts:
+    - 192.168.1.10
+    - 192.168.1.17
+  home_interval: 5
