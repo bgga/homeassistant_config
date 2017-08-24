@@ -1,0 +1,99 @@
+salon:
+  name: Salon
+  entities:
+    - switch.lampka_na_szafce
+    - light.hyperion
+    - sensor.temperatura
+    - sensor.cisnienie
+    - sensor.wilgotnosc
+sypialnia:
+  name: Sypialnia
+  entities:
+    - sensor.temperatura_sypialnia
+    - sensor.cisnienie_sypialnia
+kuchnia:
+  name: Kuchnia
+  entities:
+    - switch.ledy
+biuro:
+  name: Biuro
+  entities:
+    - sensor.biuro
+balkon:
+  name: Balkon
+  entities:
+  - sensor.dwor
+raspberry:
+  name: RaspberryPi
+  entities:
+  - sensor.ipv4_address_eth0
+  - sensor.received_eth0
+  - sensor.sent_eth0
+  - sensor.cpu_use
+  - sensor.ram_free
+  - sensor.last_boot
+  - sensor.since_last_boot
+slonce:
+  name: Słońce i Księżyc
+  entities:
+  - sun.sun
+  - sensor.moon
+  - weather.openweathermap
+speedtest:
+  name: Speedtest
+  entities:
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.speedtest_ping
+#temperatury:
+#    name: Temperatury
+#    entities:
+#    - sensor.temperatura
+#    - sensor.biuro
+#    - sensor.dwor
+    
+    
+default_view:
+  view: yes
+  entities:
+  - device_tracker.agatka
+  - device_tracker.bart
+  - group.kuchnia
+#  - group.sypialnia
+  - group.salon
+  - group.biuro
+  - group.balkon
+    
+pogoda:
+  name: Pogoda
+  view: yes
+  entities:
+  - group.slonce  
+ 
+hardware:
+  name: Hardware
+  view: yes
+  icon: mdi:raspberrypi
+  entities:
+  - group.raspberry
+  - group.speedtest
+
+telewizor:
+  name: Telewizor
+  view: yes
+  icon: mdi:television-classic
+  entities:
+  - media_player.telewizor 
+muzyka:
+  name: Muzyka
+  view: yes
+  icon: mdi:spotify
+  entities:
+  - media_player.spotify
+monitoring:
+  name: Monitoring
+  view: yes
+  icon:  mdi:cctv
+  entities:
+  - camera.monitoring
+#  - camera.ip_webcam
