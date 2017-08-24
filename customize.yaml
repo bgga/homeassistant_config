@@ -1,0 +1,20 @@
+switch.ledy:
+  icon: mdi:lightbulb
+switch.lampka_na_szafce:
+  icon: mdi:lightbulb
+sensor.cisnienie:
+  icon: mdi:water-percent
+sensor.temperatura_sypialnia:
+  friendly_name: Temperatura
+sensor.dwor:
+  friendly_name: Temperatura
+sensor.biuro:
+  friendly_name: Temperatura
+sensor.ipv4_address_eth0:
+  friendly_name: Adres IP
+sensor.received_eth0:
+  friendly_name: Otrzymano
+sensor.sent_eth0:
+  friendly_name: Wysłano
+sensor.cpu_use:
+  friendly_name: Użycie Procesora

@@ -1,0 +1,18 @@
+- platform: mqtt
+  name: "Ledy"
+  state_topic: "led_kuchnia/sonoff/Switch"
+  command_topic: "led_kuchnia/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 1
+  retain: true
+- platform: mqtt
+  name: "Lampka na Szafce"
+  state_topic: "lampka_na_szafce/lampka/Switch"
+  command_topic: "lampka_na_szafce/gpio/12"
+  payload_on: "1"
+  payload_off: "0"
+  optimistic: false
+  qos: 1
+  retain: true

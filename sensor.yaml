@@ -1,0 +1,58 @@
+- platform: speedtest
+  hour:
+    - 23
+  minute:
+    - 20
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+- platform: moon
+- platform: mqtt
+  state_topic: "sypialnia/BMP/Temp"
+  name: "Temperatura Sypialnia"
+  friendly_name: Temperatura 
+  qos: 0
+  unit_of_measurement: "°C"
+- platform: mqtt
+  state_topic: "sypialnia/BMP/Press"
+  name: "Ciśnienie Sypialnia"
+  qos: 0
+  unit_of_measurement: "hPa"
+- platform: mqtt
+  state_topic: "salon/bme280/Temperature"
+  name: "Temperatura"
+  friendly_name: Temperatura
+  qos: 0
+  unit_of_measurement: "°C"
+- platform: mqtt
+  state_topic: "salon/bme280/Humidity"
+  name: "Wilgotność"
+  qos: 0
+  unit_of_measurement: "%"
+- platform: mqtt
+  state_topic: "salon/bme280/Pressure"
+  name: "Ciśnienie"
+  qos: 0
+  unit_of_measurement: "hPa"
+- platform: systemmonitor
+  resources:
+    - type: ipv4_address
+      arg: eth0
+    - type: memory_free
+    - type: network_in
+      arg: eth0
+    - type: network_out
+      arg: eth0
+    - type: last_boot
+    - type: since_last_boot
+    - type: processor_use
+- platform: onewire
+  names:
+    28-000007e19e1e: Biuro
+    28-000007e2a6c6: Dwór
+- platform: openweathermap
+  api_key: bd0dc2fae998ca753d326a1b1a68f193
+  monitored_conditions:
+    - weather
+    - temperature

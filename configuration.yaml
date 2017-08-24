@@ -1,0 +1,208 @@
+homeassistant:
+  name: Domek
+  latitude: 50.35061
+  longitude: 18.91458
+  elevation: 278
+  unit_system: metric
+  time_zone: Europe/Warsaw
+  customize: !include customize.yaml
+
+#introduction:
+
+frontend:
+
+config:
+
+http:
+  api_password: !include secret.yaml
+
+#updater:
+
+discovery:
+
+#conversation:
+
+history:
+
+logbook:
+
+sun:
+
+weather:
+  - platform: openweathermap
+    api_key: bd0dc2fae998ca753d326a1b1a68f193
+
+mqtt:
+  broker: 127.0.0.1
+  
+light:
+  - platform: hyperion
+    host: 192.168.1.29
+
+sensor: !include sensor.yaml
+
+switch: !include switch.yaml
+
+media_player:
+  - platform: webostv
+    name: Telewizor
+    host: 192.168.1.13
+    mac: C8:08:E9:EC:FE:E5
+    customize:
+      sources:
+        - livetv
+        - youtube
+        - netflix
+        - HDMI2
+  - platform: spotify
+    client_id: e40f3abe28b2457bb288fa1ac9a2da9a
+    client_secret: 1e0e4ea0ffb548e3bc1fa7c0b245a6f1       
+
+notify:
+  - platform: webostv
+    host: 192.168.1.13
+    name: Telewizor
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts:
+      - 192.168.1.10
+      - 192.168.1.17
+    home_interval: 5
+# Text to speech
+#tts:
+#  - platform: google
+
+#android_ip_webcam:
+#  - host: 192.168.1.18
+
+camera:
+  - platform: generic
+    name: Monitoring
+    still_image_url: http://192.168.1.18:8080/photoaf.jpg
+
+group:
+  salon:
+    name: Salon
+    entities:
+      - switch.lampka_na_szafce
+      - light.hyperion
+      - sensor.temperatura
+      - sensor.cisnienie
+      - sensor.wilgotnosc
+  sypialnia:
+    name: Sypialnia
+    entities:
+      - sensor.temperatura_sypialnia
+      - sensor.cisnienie_sypialnia
+  kuchnia:
+    name: Kuchnia
+    entities:
+      - switch.ledy
+  biuro:
+    name: Biuro
+    entities:
+      - sensor.biuro
+  balkon:
+    name: Balkon
+    entities:
+    - sensor.dwor
+  raspberry:
+    name: RaspberryPi
+    entities:
+    - sensor.ipv4_address_eth0
+    - sensor.received_eth0
+    - sensor.sent_eth0
+    - sensor.cpu_use
+    - sensor.ram_free
+    - sensor.last_boot
+    - sensor.since_last_boot
+  slonce:
+    name: Słońce i Księżyc
+    entities:
+    - sun.sun
+    - sensor.moon
+    - weather.openweathermap
+  speedtest:
+    name: Speedtest
+    entities:
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+#  temperatury:
+#    name: Temperatury
+#    entities:
+#    - sensor.temperatura
+#    - sensor.biuro
+#    - sensor.dwor
+    
+    
+  default_view:
+    view: yes
+    entities:
+    - device_tracker.agatka
+    - device_tracker.bart
+    - group.kuchnia
+#    - group.sypialnia
+    - group.salon
+    - group.biuro
+    - group.balkon
+    
+  pogoda:
+    name: Pogoda
+    view: yes
+    entities:
+    - group.slonce  
+   
+  hardware:
+    name: Hardware
+    view: yes
+    icon: mdi:raspberrypi
+    entities:
+    - group.raspberry
+    - group.speedtest
+
+  telewizor:
+    name: Telewizor
+    view: yes
+    icon: mdi:television-classic
+    entities:
+    - media_player.telewizor 
+  muzyka:
+    name: Muzyka
+    view: yes
+    icon: mdi:spotify
+    entities:
+    - media_player.spotify
+  monitoring:
+    name: Monitoring
+    view: yes
+    icon:  mdi:cctv
+    entities:
+    - camera.monitoring
+#    - camera.ip_webcam
+
+automation:
+  - alias: powiadomionko_bart
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: device_tracker.bart
+      from: 'not_home'
+      to: 'home'
+    action:
+      service: notify.telewizor
+      data:
+        message: "Pan i władca powrócił na swe włości."
+  
+  - alias: powiadomionko_agatka
+    hide_entity: True
+    trigger:
+      platform: state
+      entity_id: device_tracker.agatka
+      from: 'not_home'
+      to: 'home'
+    action:
+      service: notify.telewizor
+      data:
+        message: "Agatka w domu."
