@@ -1,0 +1,23 @@
+- alias: powiadomionko_bart
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: device_tracker.bart
+    from: 'not_home'
+    to: 'home'
+  action:
+    service: notify.telewizor
+    data:
+      message: "Pan i władca powrócił na swe włości."
+
+- alias: powiadomionko_agatka
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: device_tracker.agatka
+    from: 'not_home'
+    to: 'home'
+  action:
+    service: notify.telewizor
+    data:
+      message: "Agatka w domu."
