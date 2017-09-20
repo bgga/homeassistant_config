@@ -1,3 +1,19 @@
 - platform: webostv
   host: 192.168.1.13
   name: Telewizor
+#- name: html5
+#  platform: html5
+#  gcm_api_key: 'AAAAZDm2uIY:APA91bE9kAnLqKTbmHPTDojF9t06q67gvapVX8KP4bxJq-WbUx9Jney9i1wXV2drIi7qL0zg6sZXZ-R_gNHdgtrVdGkoeyDwaLrrIUgS8rZhgz_zFVu3qxa1s9-HldCIlBNFG6EYIcv0'
+#  gcm_sender_id: '430465005702'
+
+- name: mesangoo
+  platform: facebook
+  page_access_token: EAAFCmvLwZBbkBADZB1ZARkiIqoof4dF1hJJx8oCwWGaI3PDZAx6KSlZADSYdBNQ1nfZBoZAxeCYuWkSHSGoWghgYNrKZBHalhACQnTpcK2HPk70MqGWVI8fr8kxbxcxZB6QcqVFSX5pVm9oRnOgdYK4DR2uxcE8p9uOJLvpooXoszgwZDZD
+
+
+
+
+
+
+
+

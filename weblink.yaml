@@ -1,0 +1,7 @@
+entities:
+  - name: ESP Kuchnia
+    url: http://192.168.1.22/
+  - name: ESP Salon
+    url: http://192.168.1.15
+  - name: ESP Lampka
+    url: http://192.168.1.14

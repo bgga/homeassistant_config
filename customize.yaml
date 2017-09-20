@@ -15,6 +15,21 @@ sensor.ipv4_address_eth0:
 sensor.received_eth0:
   friendly_name: Otrzymano
 sensor.sent_eth0:
-  friendly_name: Wysłano
+  friendly_name: "Wys\u0142ano"
 sensor.cpu_use:
-  friendly_name: Użycie Procesora
+  friendly_name: "U\u017Cycie Procesora"
+sensor.myipopendnscom:
+  friendly_name: Zew. Adres IP
+  icon: mdi:server-network
+sensor.rssi_salon:
+  friendly_name: Salon
+  icon: mdi:signal
+sensor.rssi_kuchnia:
+  friendly_name: Kuchnia
+  icon: mdi:signal
+sensor.rssi_lampka:
+  friendly_name: Lampka
+  icon: mdi:signal
+zone.home:
+  radius: 30
+group.all_automations: {}

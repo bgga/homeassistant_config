@@ -14,17 +14,31 @@ frontend:
 config:
 
 http:
+  server_port: 8123
+  base_url: www.chatabarta.pl
   api_password: !include secret.yaml
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
 
 #updater:
 
 discovery:
+
+recorder:
+  purge_days: 5
+  exclude:
+    entities:
+      - sensor.since_last_boot
 
 #conversation:
 
 history:
 
 logbook:
+  exclude:
+    domains:
+      - automation
 
 sun:
 
@@ -64,3 +78,5 @@ camera:
 group: !include groups.yaml
 
 automation: !include automations.yaml
+
+weblink: !include weblink.yaml

@@ -1,13 +1,31 @@
 - platform: speedtest
   hour:
     - 23
+    - 12
   minute:
     - 20
   monitored_conditions:
     - ping
     - download
     - upload
+
 - platform: moon
+
+- platform: mqtt
+  state_topic: "led_kuchnia/system/wifi"
+  name: "rssi kuchnia"
+  qos: 0
+  unit_of_measurement: "dB"
+- platform: mqtt
+  state_topic: "lampka_na_szafce/system/wifi"
+  name: "rssi lampka"
+  qos: 0
+  unit_of_measurement: "dB"
+- platform: mqtt
+  state_topic: "salon/system/wifi"
+  name: "rssi salon"
+  qos: 0
+  unit_of_measurement: "dB"
 - platform: mqtt
   state_topic: "sypialnia/BMP/Temp"
   name: "Temperatura Sypialnia"
@@ -51,8 +69,16 @@
   names:
     28-000007e19e1e: Biuro
     28-000007e2a6c6: Dwór
+    scan_interval: 300
 - platform: openweathermap
   api_key: bd0dc2fae998ca753d326a1b1a68f193
+  language: pl
   monitored_conditions:
     - weather
     - temperature
+- platform: dnsip
+- platform: command_line
+  name: Temperatura Procesora
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) }}'

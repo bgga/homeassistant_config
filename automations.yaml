@@ -1,17 +1,26 @@
 - alias: powiadomionko_bart
-  hide_entity: True
+  hide_entity: False
   trigger:
     platform: state
     entity_id: device_tracker.bart
     from: 'not_home'
     to: 'home'
   action:
-    service: notify.telewizor
+  - service: notify.telewizor
     data:
       message: "Pan i władca powrócił na swe włości."
+  - service: light.turn_on
+    entity_id:
+      - light.hyperion
+    data:
+      rgb_color: [150, 200, 250]
+  - delay: 00:00:02
+  - service: light.turn_off
+    entity_id:
+      - light.hyperion
 
 - alias: powiadomionko_agatka
-  hide_entity: True
+  hide_entity: False
   trigger:
     platform: state
     entity_id: device_tracker.agatka
@@ -21,3 +30,43 @@
     service: notify.telewizor
     data:
       message: "Agatka w domu."
+      
+- alias: mqtt_dwor
+  hide_entity: False
+  trigger:
+    platform: time
+    minutes: '/1'
+    seconds: 00
+  action:
+    service: mqtt.publish
+    data:
+      topic: "hass/temp/dwor"
+      payload_template: "{{ states('sensor.dwor') }}"
+      
+- alias: mqtt_biuro
+  hide_entity: False
+  trigger:
+    platform: time
+    minutes: '/1'
+    seconds: 00
+  action:
+    service: mqtt.publish
+    data:
+      topic: "hass/temp/biuro"
+      payload_template: "{{ states('sensor.biuro') }}"
+      
+      
+- alias: test
+  trigger:
+    platform: time
+    hours: 06
+    minutes: 09
+    seconds: 00
+  action:
+    service: notify.mesangoo
+    data:
+      message: "Siema!! ;)    Temperatura na dworze: {{ states('sensor.dwor') }} Temoeratura w biurze: {{ states('sensor.biuro') }}"
+      target:
+        - +48792014259
+        - +48505340516
+
