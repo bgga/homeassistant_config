@@ -6,10 +6,9 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Warsaw
   customize: !include customize.yaml
+frontend:
 
 #introduction:
-
-frontend:
 
 config:
 
@@ -26,12 +25,13 @@ http:
 discovery:
 
 recorder:
-  purge_days: 5
+  purge_interval: 2
+  purge_keep_days: 5
   exclude:
     entities:
       - sensor.since_last_boot
 
-#conversation:
+conversation:
 
 history:
 
@@ -42,13 +42,13 @@ logbook:
 
 sun:
 
-weather:
-  - platform: openweathermap
-    api_key: bd0dc2fae998ca753d326a1b1a68f193
+#weather:
+#  - platform: openweathermap
+#    api_key: bd0dc2fae998ca753d326a1b1a68f193
 
 mqtt:
   broker: 127.0.0.1
-  
+
 light:
   - platform: hyperion
     host: 192.168.1.29
@@ -57,11 +57,19 @@ sensor: !include sensor.yaml
 
 switch: !include switch.yaml
 
-media_player: !include media_player.yaml      
+media_player: !include media_player.yaml
 
 notify: !include notify.yaml
 
 device_tracker: !include device_tracker.yaml
+
+group: !include groups.yaml
+
+automation: !include automations.yaml
+
+weblink: !include weblink.yaml
+
+hassio:
 
 # Text to speech
 #tts:
@@ -70,13 +78,7 @@ device_tracker: !include device_tracker.yaml
 #android_ip_webcam:
 #  - host: 192.168.1.18
 
-camera:
-  - platform: generic
-    name: Monitoring
-    still_image_url: http://192.168.1.18:8080/photoaf.jpg
-
-group: !include groups.yaml
-
-automation: !include automations.yaml
-
-weblink: !include weblink.yaml
+#camera:
+#  - platform: generic
+#    name: Monitoring
+#    still_image_url: http://192.168.1.18:8080/photoaf.jpg

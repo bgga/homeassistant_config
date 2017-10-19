@@ -9,6 +9,8 @@
   - service: notify.telewizor
     data:
       message: "Pan i władca powrócił na swe włości."
+      data:
+        icon: "/config/www/bart.jpg"
   - service: light.turn_on
     entity_id:
       - light.hyperion
@@ -29,7 +31,9 @@
   action:
     service: notify.telewizor
     data:
-      message: "Agatka w domu."
+      message: "Agatka w domu!"
+#      data:
+#        icon: "/config/www/borsuk.jpg"
       
 - alias: mqtt_dwor
   hide_entity: False
@@ -41,7 +45,7 @@
     service: mqtt.publish
     data:
       topic: "hass/temp/dwor"
-      payload_template: "{{ states('sensor.dwor') }}"
+      payload_template: "{{ states('sensor.dwor_temperature') }}"
       
 - alias: mqtt_biuro
   hide_entity: False
@@ -53,7 +57,7 @@
     service: mqtt.publish
     data:
       topic: "hass/temp/biuro"
-      payload_template: "{{ states('sensor.biuro') }}"
+      payload_template: "{{ states('sensor.biuro_temperature') }}"
       
       
 - alias: test
@@ -65,7 +69,7 @@
   action:
     service: notify.mesangoo
     data:
-      message: "Siema!! ;)    Temperatura na dworze: {{ states('sensor.dwor') }} Temoeratura w biurze: {{ states('sensor.biuro') }}"
+      message: "Siema!! ;)    Temperatura na dworze: {{ states('sensor.dwor_temperature') }} Temoeratura w biurze: {{ states('sensor.biuro_temperature') }}"
       target:
         - +48792014259
         - +48505340516

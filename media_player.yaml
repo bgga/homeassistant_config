@@ -8,6 +8,6 @@
       - youtube
       - netflix
       - HDMI2
-- platform: spotify
-  client_id: e40f3abe28b2457bb288fa1ac9a2da9a
-  client_secret: 1e0e4ea0ffb548e3bc1fa7c0b245a6f1 
+#- platform: spotify
+#  client_id: e40f3abe28b2457bb288fa1ac9a2da9a
+#  client_secret: 1e0e4ea0ffb548e3bc1fa7c0b245a6f1 

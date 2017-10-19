@@ -6,9 +6,9 @@ sensor.cisnienie:
   icon: mdi:water-percent
 sensor.temperatura_sypialnia:
   friendly_name: Temperatura
-sensor.dwor:
+sensor.dwor_temperature:
   friendly_name: Temperatura
-sensor.biuro:
+sensor.biuro_temperature:
   friendly_name: Temperatura
 sensor.ipv4_address_eth0:
   friendly_name: Adres IP
@@ -30,6 +30,10 @@ sensor.rssi_kuchnia:
 sensor.rssi_lampka:
   friendly_name: Lampka
   icon: mdi:signal
+sensor.drukarka:
+  icon: mdi:printer
+sensor.hyperion:
+  icon: mdi:radio-tower
 zone.home:
   radius: 30
 group.all_automations: {}

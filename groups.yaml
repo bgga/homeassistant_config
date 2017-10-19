@@ -18,11 +18,11 @@ kuchnia:
 biuro:
   name: Biuro
   entities:
-    - sensor.biuro
+    - sensor.biuro_temperature
 balkon:
   name: Balkon
   entities:
-  - sensor.dwor
+  - sensor.dwor_temperature
 raspberry:
   name: RaspberryPi
   entities:
@@ -56,8 +56,26 @@ espeasy:
   - weblink.esp_lampka
   - sensor.rssi_kuchnia
   - weblink.esp_kuchnia
-    
-    
+test_pierdy:
+  name: Tesowe_pierdy
+  entities:
+linki:
+  name: Linki
+  entities:
+  - weblink.homeassistant
+
+urzadzenia:
+  name: Urządzenia
+  entities:
+  - sensor.hyperion
+  - sensor.drukarka
+temperatury:
+  name: Temperatury
+  entities:
+  - sensor.biuro_temperature
+  - sensor.dwor_temperature
+  - sensor.temperatura
+  - sensor.temperatura_procesora
 default_view:
   view: yes
   entities:
@@ -90,21 +108,21 @@ telewizor:
   icon: mdi:television-classic
   entities:
   - media_player.telewizor 
-muzyka:
-  name: Muzyka
-  view: yes
-  icon: mdi:spotify
-  entities:
-  - media_player.spotify
+#muzyka:
+#  name: Muzyka
+#  view: yes
+#  icon: mdi:spotify
+#  entities:
+#  - media_player.spotify
 monitoring:
   name: Monitoring
   view: yes
   icon:  mdi:cctv
   entities:
-  - camera.monitoring
+#  - camera.monitoring
 #  - camera.ip_webcam
-automacje:
-  name: Automacje
+ustawienia:
+  name: Ustawienia
   view: Yes
   icon: mdi:wrench
   entities:
@@ -113,3 +131,8 @@ automacje:
   - automation.powiadomionko_agatka
   - automation.powiadomionko_bart
   - automation.test
+  - sensor.swiatlo
+  - group.linki
+  - group.test_pierdy
+  - group.urzadzenia
+  - group.temperatury

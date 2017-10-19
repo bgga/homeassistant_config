@@ -12,6 +12,12 @@
 - platform: moon
 
 - platform: mqtt
+  state_topic: "nowe_esp/swiatlo/pomiar"
+  name: "swiatlo"
+  qos: 0
+  expire_after: 60
+  unit_of_measurement: "jS"
+- platform: mqtt
   state_topic: "led_kuchnia/system/wifi"
   name: "rssi kuchnia"
   qos: 0
@@ -70,15 +76,23 @@
     28-000007e19e1e: Biuro
     28-000007e2a6c6: Dwór
     scan_interval: 300
-- platform: openweathermap
-  api_key: bd0dc2fae998ca753d326a1b1a68f193
-  language: pl
-  monitored_conditions:
-    - weather
-    - temperature
+#- platform: openweathermap
+#  api_key: bd0dc2fae998ca753d326a1b1a68f193
+#  language: pl
+#  monitored_conditions:
+#    - weather
+#    - temperature
 - platform: dnsip
 - platform: command_line
   name: Temperatura Procesora
   command: "cat /sys/class/thermal/thermal_zone0/temp"
   unit_of_measurement: "°C"
   value_template: '{{ value | multiply(0.001) }}'
+- platform: template
+  sensors:
+    hyperion:
+      value_template: '{% if is_state("device_tracker.hyperion", "home") %}Online{% else %}Offline{% endif %}'
+      friendly_name: 'Hyperion'
+    drukarka:
+      value_template: '{% if is_state("device_tracker.drukarka", "home") %}Online{% else %}Offline{% endif %}'
+      friendly_name: 'Drukarka'
