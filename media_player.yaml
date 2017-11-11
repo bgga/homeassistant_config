@@ -2,6 +2,7 @@
   name: Telewizor
   host: 192.168.1.13
   mac: C8:08:E9:EC:FE:E5
+  timeout: 20
   customize:
     sources:
       - livetv

@@ -16,7 +16,7 @@ sensor.received_eth0:
   friendly_name: Otrzymano
 sensor.sent_eth0:
   friendly_name: "Wys\u0142ano"
-sensor.cpu_use:
+sensor.cpu_used:
   friendly_name: "U\u017Cycie Procesora"
 sensor.myipopendnscom:
   friendly_name: Zew. Adres IP
@@ -34,6 +34,12 @@ sensor.drukarka:
   icon: mdi:printer
 sensor.hyperion:
   icon: mdi:radio-tower
+switch.test_dioda:
+  icon: mdi:led-off
+sensor.swiatlo:
+ unit_of_measurement: JS
+ icon: mdi:weather-sunny
+ friendly_name: Natężenie Światła
 zone.home:
   radius: 30
 group.all_automations: {}

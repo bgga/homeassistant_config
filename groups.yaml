@@ -19,6 +19,9 @@ biuro:
   name: Biuro
   entities:
     - sensor.biuro_temperature
+    - sensor.swiatlo
+    - switch.swicz
+    - switch.test_dioda
 balkon:
   name: Balkon
   entities:
@@ -31,7 +34,7 @@ raspberry:
   - sensor.received_eth0
   - sensor.sent_eth0
   - sensor.temperatura_procesora
-  - sensor.cpu_use
+  - sensor.cpu_used
   - sensor.ram_free
   - sensor.last_boot
   - sensor.since_last_boot
@@ -40,7 +43,15 @@ slonce:
   entities:
   - sun.sun
   - sensor.moon
-  - weather.openweathermap
+  # - sensor.dark_sky_icon
+darksky:
+  name: Dark Sky
+  entities:
+  - sensor.dark_sky_summary
+  - sensor.dark_sky_temperature
+  - sensor.dark_sky_wind_speed
+  - sensor.dark_sky_cloud_coverage
+  - sensor.dark_sky_nearest_storm_distance
 speedtest:
   name: Speedtest
   entities:
@@ -76,15 +87,17 @@ temperatury:
   - sensor.dwor_temperature
   - sensor.temperatura
   - sensor.temperatura_procesora
+  - sensor.temperatura_lm7805
 default_view:
   view: yes
   entities:
   - device_tracker.agatka
   - device_tracker.bart
-  - group.kuchnia
-#  - group.sypialnia
   - group.salon
   - group.biuro
+  - group.kuchnia
+#  - group.sypialnia
+
   - group.balkon
     
 pogoda:
@@ -92,6 +105,7 @@ pogoda:
   view: yes
   entities:
   - group.slonce  
+  - group.darksky
  
 hardware:
   name: Hardware
@@ -131,7 +145,7 @@ ustawienia:
   - automation.powiadomionko_agatka
   - automation.powiadomionko_bart
   - automation.test
-  - sensor.swiatlo
+  - automation.monit_hyperion
   - group.linki
   - group.test_pierdy
   - group.urzadzenia

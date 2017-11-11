@@ -16,3 +16,17 @@
   optimistic: false
   qos: 1
   retain: true
+- platform: mqtt
+  name: "swicz"
+  state_topic: "nowe_esp/relay/Switch"
+  command_topic: "nowe_esp/gpio/4"
+  payload_on: "0"
+  payload_off: "1"
+  optimistic: false
+  qos: 1
+  retain: true
+
+- platform: arduino
+  pins:
+    13:
+      name: Test dioda

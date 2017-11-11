@@ -74,3 +74,19 @@
         - +48792014259
         - +48505340516
 
+        
+# - alias: monit_hyperion
+  # hide_entity: False
+  # trigger:
+    # platform: state
+    # entity_id: sensor.hyperion
+    # from: 'Online'
+    # to: 'Offline'
+  # action:
+  # - service: switch.turn_on
+    # entity_id:
+      # - switch.czerwona
+  # - service: switch.turn_off
+    # entity_id:
+      # - switch.zielona
+

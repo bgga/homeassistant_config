@@ -13,7 +13,7 @@ frontend:
 config:
 
 http:
-  server_port: 8123
+  server_port: 443
   base_url: www.chatabarta.pl
   api_password: !include secret.yaml
   ssl_certificate: /ssl/fullchain.pem
@@ -70,6 +70,9 @@ automation: !include automations.yaml
 weblink: !include weblink.yaml
 
 hassio:
+
+arduino:
+  port: /dev/ttyUSB0
 
 # Text to speech
 #tts:
